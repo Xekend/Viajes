@@ -9,11 +9,11 @@
 
 CREATE TABLE `testimoniales` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(255) DEFAULT NULL,
-  `correo` varchar(255) DEFAULT NULL,
-  `mensaje` text,
+  `nombre` varchar(60) COLLATE utf8_bin DEFAULT NULL,
+  `correo` varchar(60) COLLATE utf8_bin DEFAULT NULL,
+  `mensaje` text CHARACTER SET utf8 COLLATE utf8_bin,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
 
 CREATE TABLE `viajes` (
   `id` bigint NOT NULL,
@@ -29,13 +29,13 @@ CREATE TABLE `viajes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `testimoniales` (`id`, `nombre`, `correo`, `mensaje`) VALUES
-(1, 'Rosniel', 'RosnielMagallanes@gmail.com', 'Carlos es el Papá');
+(1, 'Carlos Suarez', 'carlos@suarez.com', 'Muy recomendado, he pasado las mejores vacaciones de mi vida');
 INSERT INTO `testimoniales` (`id`, `nombre`, `correo`, `mensaje`) VALUES
-(3, 'Jose ', 'Joselo@gmail.com', 'Lo que dice arriba');
+(2, 'Andrea Martinez', 'andre@martinez.com', 'Rio de Janeiro es hermos! gracias a Agencia de Viajes la pase super!!!');
 INSERT INTO `testimoniales` (`id`, `nombre`, `correo`, `mensaje`) VALUES
-(4, 'Carlos', 'carloseduardora@gmail.com', 'ok');
+(3, 'Mateo M', 'mateo@correo.com', 'Las mejores vacaciones que he tenido en Francia');
 INSERT INTO `testimoniales` (`id`, `nombre`, `correo`, `mensaje`) VALUES
-(5, 'Adru', 'adre@gmail.com', 'okok\r\n');
+(4, 'Julio Cervantes', 'julio@correo.com', 'Mi ultimo viaje a Canadá con Agencia de Viajes fue perfecto!!');
 
 INSERT INTO `viajes` (`id`, `titulo`, `precio`, `fecha_ida`, `fecha_vuelta`, `imagen`, `descripcion`, `disponibles`, `slug`) VALUES
 (1, 'Italia', '50000', '2021-06-24', '2021-06-30', 'roma', 'Praesent tincidunt ante at justo semper volutpat. Sed risus neque, scelerisque id dictum in, placerat non erat. Sed eget tellus eu mauris faucibus pharetra. Praesent vulputate diam ac diam dignissim, eu semper turpis gravida. Vestibulum tempor purus orci, vitae ullamcorper erat congue quis. Nullam dapibus dui a velit lacinia, eu cursus massa cursus. Morbi lobortis fermentum urna, quis tincidunt justo varius vitae. In justo nisl, auctor vel eros sed, tempus efficitur lacus. Maecenas volutpat pharetra dolor, nec rutrum ipsum dapibus id.\r\n\r\nMauris ultricies augue lectus, efficitur tincidunt enim euismod non. Praesent nisl elit, eleifend et eleifend eu, venenatis et felis. Donec eleifend mi in congue semper. Quisque hendrerit purus eget pharetra laoreet. Donec nisl nisi, auctor at vehicula et, fermentum sed urna. In nec porta felis, eu ullamcorper lacus. Curabitur scelerisque commodo laoreet. Donec finibus vel nibh quis ultrices. Integer varius tellus sed leo tempor, vitae ullamcorper leo placerat.', 32, 'viaje-italia');

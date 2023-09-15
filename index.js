@@ -1,43 +1,37 @@
-import express from 'express'
-import router from './routes/index.js'
-import db from './config/db.js' 
+import express from 'express';
+import router from './routes/index.js';
+import db from './config/db.js';
 
+const app = express();
 
-
-const app=express();
-
-//Conectar la base de datos
+// Conectar la base de datos
 db.authenticate()
-    .then(()=> console.log('Base de datos conectada'))
-    .catch(error => console.log(error));
+    .then( () => console.log('Conexión exitosa a la base de datos'))
+    .catch( err => console.log('Error al conectar a la base de datos: ', err));
 
+// Define the port to run on
+const port = process.env.PORT || 4400;
 
-//Definir el puerto
-const port=process.env.PORT||4000;
+// enable pug
+app.set('view engine', 'pug');
 
-//Habilitar PUG
-app.set('view engine', 'pug')
-
-//Obtener el año actual
-app.use((req,res,next)=>{
-    const year=new Date();
-    res.locals.actualYear=year.getFullYear();
-    res.locals.nombreSitio="Agencia de Viajes";
-    console.log(res.locals);
+// obtain the year of the current date
+app.use( (req, res, next) => {
+    const year = new Date();
+    res.locals.currentYear = year.getFullYear();
+    res.locals.siteName = "Agencia de Viajes";
     next();
 });
 
-//Agregar body parser para leer los datos del formulario
-app.use(express.urlencoded({extended:true}));
+// Agregar body parser para leer los datos del formulario
+app.use(express.urlencoded({ extended: true }));
 
-//Definir la carpeta publica
-app.use(express.static('public'))
+// define the public folder
+app.use(express.static('public'));
 
-//Agregar router
-app.use('/',router)
+// add router
+app.use('/', router);
 
-
-
-app.listen(port,()=>{
-    console.log(`El servidor esta funcionando en el puerto ${port}`)
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 })
